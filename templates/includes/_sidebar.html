@@ -1,0 +1,36 @@
+<button class="btn btn-dark m-2" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample">Menu
+</button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="vstack gap-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="vstack gap-2">
+                        <h5 class="card-title text-center">Main</h5>
+                        <a class="btn btn-dark" href="{{ url_for('routes.index') }}">Home</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="vstack gap-2">
+                        <h5 class="card-title text-center">Manage</h5>
+                        <a class="btn btn-success" href="{{ url_for('routes.manage_incomes') }}">Incomes</a>
+                        <a class="btn btn-danger function-button"
+                           href="{{ url_for('routes.manage_outgoings') }}">Outgoings</a>
+                        <a class="btn btn-primary function-button"
+                           href="{{ url_for('routes.manage_savings_and_investments') }}">Savings and
+                            Investments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
