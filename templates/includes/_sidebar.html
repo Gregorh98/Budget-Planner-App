@@ -21,13 +21,29 @@
             <div class="card">
                 <div class="card-body">
                     <div class="vstack gap-2">
-                        <h5 class="card-title text-center">Manage</h5>
-                        <a class="btn btn-success" href="{{ url_for('routes.manage_incomes') }}">Incomes</a>
-                        <a class="btn btn-danger function-button"
-                           href="{{ url_for('routes.manage_outgoings') }}">Outgoings</a>
-                        <a class="btn btn-primary function-button"
-                           href="{{ url_for('routes.manage_savings_and_investments') }}">Savings and
-                            Investments</a>
+                        <h5 class="card-title text-center">Incomes</h5>
+                        <a class="btn btn-success" href="{{ url_for('routes.add_incomes') }}" disabled>Add</a>
+                        <a class="btn btn-success" href="{{ url_for('routes.manage_incomes') }}">Manage</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="vstack gap-2">
+                        <h5 class="card-title text-center">Outgoings</h5>
+                        <a class="btn btn-success" href="{{ url_for('routes.add_outgoings') }}" disabled>Add</a>
+                        <a class="btn btn-success" href="{{ url_for('routes.manage_outgoings') }}">Manage</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="vstack gap-2">
+                        <h5 class="card-title text-center">Savings and Investments</h5>
+                        <a class="btn btn-success" href="{{ url_for('routes.add_savings_and_investments') }}"
+                           disabled>Add</a>
+                        <a class="btn btn-success"
+                           href="{{ url_for('routes.manage_savings_and_investments') }}">Manage</a>
                     </div>
                 </div>
             </div>
