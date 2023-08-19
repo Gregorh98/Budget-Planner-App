@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "includes/_head.html" %}
+</head>
+<body>
+{% include "includes/nav.html" %}
+<div class="container pt-4">
+    <h1 class="display-1 text-center">{{pageTitle}}</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Repeats</th>
+            <th scope="col">Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% include "includes/_footer.html" %}
+
+</body>
+</html>

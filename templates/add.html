@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "includes/_head.html" %}
+</head>
+<body>
+{% include "includes/nav.html" %}
+<div class="container pt-4">
+    <h1 class="display-1 text-center">{{pageTitle}}</h1>
+    <form action="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount">
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date">
+        </div>
+        <div class="mb-3">
+            <label for="repeat" class="form-label">Repeats</label>
+            <select type="select" class="form-control" id="repeat">
+                <option value="none">Does Not Repeat</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly" selected>Monthly</option>
+                <option value="annually">Annually</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea type="text" class="form-control" id="notes"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% include "includes/_footer.html" %}
+
+</body>
+</html>
