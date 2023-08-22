@@ -10,7 +10,7 @@ This project will allow me to do more with my budget.
 
 - [x] Add entries
 - [x] View entries
-- [ ] Manage entries (Remove, Edit)
+- [x] Manage entries (Remove, Edit)
 
 ### v2.0.0a - Breakdown: Ability to view breakdown for each month
 
