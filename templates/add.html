@@ -7,22 +7,22 @@
 {% include "includes/nav.html" %}
 <div class="container p-4">
     <h1 class="display-1 text-center">{{pageTitle}}</h1>
-    <form action="POST">
+    <form method="POST">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">
             <label for="amount" class="form-label">Amount</label>
-            <input type="number" class="form-control" id="amount">
+            <input type="number" class="form-control" id="amount" name="amount">
         </div>
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date">
+            <input type="date" class="form-control" id="date" name="date">
         </div>
         <div class="mb-3">
             <label for="repeat" class="form-label">Repeats</label>
-            <select type="select" class="form-control" id="repeat">
+            <select type="select" class="form-control" id="repeat" name="repeats">
                 <option value="none">Does Not Repeat</option>
                 <option value="weekly">Weekly</option>
                 <option value="monthly" selected>Monthly</option>
@@ -30,8 +30,8 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="notes" class="form-label">Notes</label>
-            <textarea type="text" class="form-control" id="notes"></textarea>
+            <label for="note" class="form-label">Note</label>
+            <textarea type="text" class="form-control" id="note" name="note"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
