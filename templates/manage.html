@@ -12,19 +12,21 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Amount</th>
-            <th scope="col">Date</th>
+            <th scope="col">Start Date/Date</th>
             <th scope="col">Repeats</th>
             <th scope="col">Notes</th>
         </tr>
         </thead>
         <tbody>
-        {% for item in items %}
+        {% for entry in entries %}
         <tr>
-            <td>{{item['name']}}</td>
-            <td>{{item['amount']}}</td>
-            <td>{{item['date']}}</td>
-            <td>{{item['repeats']}}</td>
-            <td>{{item['notes']}}</td>
+            <td>{{entry['name']}}</td>
+            <td>{{entry['amount']}}</td>
+            <td>{{entry['date']}}</td>
+            <td>{% if entry['repeats_monthly'] %}Monthly{% elif entry['repeats_annually'] %}Annually{% elif
+                entry['repeats_weekly'] %}Weekly{% else %}Does Not Repeat{% endif %}
+            </td>
+            <td>{{entry['notes']}}</td>
         </tr>
         {% endfor %}
         </tbody>

@@ -48,7 +48,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.incomes (
     id integer NOT NULL,
-    userid integer NOT NULL,
+    user_id integer NOT NULL,
     name character varying NOT NULL,
     amount money NOT NULL,
     note character varying,
@@ -93,7 +93,7 @@ ALTER SEQUENCE public.incomes_id_seq OWNED BY public.incomes.id;
 
 CREATE TABLE public.outgoings (
     id integer NOT NULL,
-    userid integer NOT NULL,
+    user_id integer NOT NULL,
     name character varying NOT NULL,
     amount money NOT NULL,
     note character varying,
@@ -138,7 +138,7 @@ ALTER SEQUENCE public.outgoings_id_seq OWNED BY public.outgoings.id;
 
 CREATE TABLE public.savings_and_investments (
     id integer NOT NULL,
-    userid integer NOT NULL,
+    user_id integer NOT NULL,
     name character varying NOT NULL,
     amount money NOT NULL,
     note character varying,

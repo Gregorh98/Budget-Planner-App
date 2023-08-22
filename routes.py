@@ -34,7 +34,8 @@ def add_incomes():
 
 @routes.route("/incomes/manage", methods=["GET", "POST"])
 def manage_incomes():
-    return render_template("manage.html", pageTitle="Manage Incomes")
+    entries = db.get_all_entries("incomes")
+    return render_template("manage.html", pageTitle="Manage Incomes", entries=entries)
 
 
 # endregion
@@ -57,7 +58,8 @@ def add_outgoings():
 
 @routes.route("/outgoings/manage", methods=["GET", "POST"])
 def manage_outgoings():
-    return render_template("manage.html", pageTitle="Manage Outgoings")
+    entries = db.get_all_entries("outgoings")
+    return render_template("manage.html", pageTitle="Manage Outgoings", entries=entries)
 
 
 # endregion
@@ -80,5 +82,6 @@ def add_savings_and_investments():
 
 @routes.route("/savings-and-investments/manage", methods=["GET", "POST"])
 def manage_savings_and_investments():
-    return render_template("manage.html", pageTitle="Manage Savings and Investments")
+    entries = db.get_all_entries("savings_and_investments")
+    return render_template("manage.html", pageTitle="Manage Savings and Investments", entries=entries)
 # endregion
