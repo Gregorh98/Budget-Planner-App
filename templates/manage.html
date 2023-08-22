@@ -4,7 +4,8 @@
     {% include "includes/_head.html" %}
 </head>
 <body>
-{% include "includes/nav.html" %}
+{% include "includes/_nav.html" %}
+{% include "includes/_flash.html" %}
 <div class="container p-4">
     <h1 class="display-1 text-center">{{pageTitle}}</h1>
     <table class="table">
@@ -13,8 +14,10 @@
             <th scope="col">Name</th>
             <th scope="col">Amount</th>
             <th scope="col">Start Date/Date</th>
+            <th scope="col">End Date</th>
             <th scope="col">Repeats</th>
             <th scope="col">Notes</th>
+            <th scope="col" colspan="2">Functions</th>
         </tr>
         </thead>
         <tbody>
@@ -22,11 +25,14 @@
         <tr>
             <td>{{entry['name']}}</td>
             <td>{{entry['amount']}}</td>
-            <td>{{entry['date']}}</td>
+            <td>{{entry['start_date']}}</td>
+            <td>{{entry['end_date']}}</td>
             <td>{% if entry['repeats_monthly'] %}Monthly{% elif entry['repeats_annually'] %}Annually{% elif
                 entry['repeats_weekly'] %}Weekly{% else %}Does Not Repeat{% endif %}
             </td>
             <td>{{entry['notes']}}</td>
+            <td><a href="/{{category}}/edit/{{entry['id']}}" class="btn btn-outline-primary">Edit</a></td>
+            <td><a href="/{{category}}/cancel/{{entry['id']}}" class="btn btn-outline-danger">Remove/Cancel</a></td>
         </tr>
         {% endfor %}
         </tbody>

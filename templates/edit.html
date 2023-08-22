@@ -11,33 +11,55 @@
     <form method="POST">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" value="{{entry['name']}}">
         </div>
         <div class="mb-3">
             <label for="amount" class="form-label">Amount</label>
-            <input type="number" class="form-control" id="amount" name="amount">
+            <input type="number" class="form-control" id="amount" name="amount" value="{{entry['amount']}}">
         </div>
         <div class="mb-3">
             <label for="start_date" class="form-label">Start Date/Date</label>
-            <input type="date" class="form-control" id="start_date" name="start_date">
+            <input type="date" class="form-control" id="start_date" name="start_date" value="{{entry['start_date']}}">
         </div>
         <div class="mb-3">
             <label for="end_date" class="form-label">End Date</label>
-            <input type="date" class="form-control" id="end_date" name="end_date">
+            <input type="date" class="form-control" id="end_date" name="end_date" value="{{entry['end_date']}}">
         </div>
         <div class="mb-3">
             <label for="repeats" class="form-label">Repeats</label>
             <select type="select" class="form-control" id="repeats" name="repeats"
                     onchange="enable_end_date()">
-                <option value="none">Does Not Repeat</option>
+
+                {% if entry['repeats_weekly'] %}
+                <option value="weekly" selected>Weekly</option>
+                {% else %}
                 <option value="weekly">Weekly</option>
+                {% endif %}
+
+                {% if entry['repeats_monthly'] %}
                 <option value="monthly" selected>Monthly</option>
+                {% else %}
+                <option value="monthly">Monthly</option>
+                {% endif %}
+
+                {% if entry['repeats_annually'] %}
+                <option value="annually" selected>Annually</option>
+                {% else %}
                 <option value="annually">Annually</option>
+                {% endif %}
+
+                {% if entry['repeats_monthly'] == false and entry['repeats_weekly'] == false and
+                entry['repeats_annually'] == false %}
+                <option value="none" selected>Does Not Repeat</option>
+                {% else %}
+                <option value="none">Does Not Repeat</option>
+                {% endif %}
+
             </select>
         </div>
         <div class="mb-3">
             <label for="note" class="form-label">Note</label>
-            <textarea type="text" class="form-control" id="note" name="note"></textarea>
+            <textarea type="text" class="form-control" id="note" name="note">{{entry['note']}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -54,6 +76,25 @@
         document.getElementById("end_date").disabled = false;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

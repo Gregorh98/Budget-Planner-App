@@ -26,3 +26,10 @@ This project will allow me to do more with my budget.
 - [ ] Add logout functionality
 - [ ] Add ability to delete account
 - [ ] Add ability to edit account details
+
+---
+
+### Misc ideas
+
+- Save user input on form submission failure
+- Tooltips to help with what entries represent

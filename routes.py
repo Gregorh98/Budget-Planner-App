@@ -27,7 +27,6 @@ def add_incomes():
             flash(("Added entry " + "'" + data['name'] + "'" + " successfully!"), "success")
         except Exception as e:
             flash(f"An error occurred: {e}", "danger")
-        return redirect(url_for("routes.add_incomes"))
 
     return render_template("add.html", pageTitle="Add Incomes")
 
@@ -35,7 +34,23 @@ def add_incomes():
 @routes.route("/incomes/manage", methods=["GET", "POST"])
 def manage_incomes():
     entries = db.get_all_entries("incomes")
-    return render_template("manage.html", pageTitle="Manage Incomes", entries=entries)
+    return render_template("manage.html", pageTitle="Manage Incomes", category="incomes", entries=entries)
+
+
+@routes.route("/incomes/edit/<entry_id>", methods=["GET", "POST"])
+def edit_income(entry_id):
+    if request.method == "POST":
+        try:
+            data = utils.get_add_data_from_request(request.form)
+            db.update_entry(entry_id, data, "incomes")
+
+            flash(("Updated entry " + "'" + data['name'] + "'" + " successfully!"), "success")
+            return redirect(url_for("routes.manage_incomes"))
+        except Exception as e:
+            flash(f"An error occurred: {e}", "danger")
+
+    entry = db.get_entry("incomes", entry_id)
+    return render_template("edit.html", pageTitle="Edit Income", entry=entry)
 
 
 # endregion
@@ -51,7 +66,6 @@ def add_outgoings():
             flash(("Added entry " + "'" + data['name'] + "'" + " successfully!"), "success")
         except Exception as e:
             flash(f"An error occurred: {e}", "danger")
-        return redirect(url_for("routes.add_outgoings"))
 
     return render_template("add.html", pageTitle="Add Outgoings")
 
@@ -59,7 +73,7 @@ def add_outgoings():
 @routes.route("/outgoings/manage", methods=["GET", "POST"])
 def manage_outgoings():
     entries = db.get_all_entries("outgoings")
-    return render_template("manage.html", pageTitle="Manage Outgoings", entries=entries)
+    return render_template("manage.html", pageTitle="Manage Outgoings", category="outgoings", entries=entries)
 
 
 # endregion
@@ -75,7 +89,6 @@ def add_savings_and_investments():
             flash(("Added entry " + "'" + data['name'] + "'" + " successfully!"), "success")
         except Exception as e:
             flash(f"An error occurred: {e}", "danger")
-        return redirect(url_for("routes.add_savings_and_investments"))
 
     return render_template("add.html", pageTitle="Add Savings and Investments")
 
@@ -83,5 +96,6 @@ def add_savings_and_investments():
 @routes.route("/savings-and-investments/manage", methods=["GET", "POST"])
 def manage_savings_and_investments():
     entries = db.get_all_entries("savings_and_investments")
-    return render_template("manage.html", pageTitle="Manage Savings and Investments", entries=entries)
+    return render_template("manage.html", pageTitle="Manage Savings and Investments",
+                           category="savings-and-investments", entries=entries)
 # endregion
