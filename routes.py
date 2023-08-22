@@ -76,6 +76,22 @@ def manage_outgoings():
     return render_template("manage.html", pageTitle="Manage Outgoings", category="outgoings", entries=entries)
 
 
+@routes.route("/outgoings/edit/<entry_id>", methods=["GET", "POST"])
+def edit_outgoing(entry_id):
+    if request.method == "POST":
+        try:
+            data = utils.get_add_data_from_request(request.form)
+            db.update_entry(entry_id, data, "outgoings")
+
+            flash(("Updated entry " + "'" + data['name'] + "'" + " successfully!"), "success")
+            return redirect(url_for("routes.manage_outgoings"))
+        except Exception as e:
+            flash(f"An error occurred: {e}", "danger")
+
+    entry = db.get_entry("outgoings", entry_id)
+    return render_template("edit.html", pageTitle="Edit Outgoing", entry=entry)
+
+
 # endregion
 
 # region savings-and-investments
@@ -98,4 +114,20 @@ def manage_savings_and_investments():
     entries = db.get_all_entries("savings_and_investments")
     return render_template("manage.html", pageTitle="Manage Savings and Investments",
                            category="savings-and-investments", entries=entries)
+
+
+@routes.route("/savings-and-investments/edit/<entry_id>", methods=["GET", "POST"])
+def edit_saving_or_investment(entry_id):
+    if request.method == "POST":
+        try:
+            data = utils.get_add_data_from_request(request.form)
+            db.update_entry(entry_id, data, "savings_and_investments")
+
+            flash(("Updated entry " + "'" + data['name'] + "'" + " successfully!"), "success")
+            return redirect(url_for("routes.manage_savings_and_investments"))
+        except Exception as e:
+            flash(f"An error occurred: {e}", "danger")
+
+    entry = db.get_entry("savings_and_investments", entry_id)
+    return render_template("edit.html", pageTitle="Edit Saving or Investment", entry=entry)
 # endregion

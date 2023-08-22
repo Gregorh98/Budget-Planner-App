@@ -41,7 +41,7 @@ def add_entry(entry_data, target_table):
 def get_all_entries(target_table):
     with getConn() as conn:
         with conn.cursor() as cursor:
-            sql = "select id, name, amount, note, start_date, end_date, repeats_monthly, repeats_annually, repeats_weekly from %s where user_id = %s"
+            sql = "select id, name, amount, note, start_date, end_date, repeats_monthly, repeats_annually, repeats_weekly from %s where user_id = %s order by id asc"
             data = (
                 AsIs("public." + target_table),
                 0  # TODO: Replace with real user id
