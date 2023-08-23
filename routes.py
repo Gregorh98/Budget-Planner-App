@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 
 import db
@@ -13,7 +15,9 @@ def index():
 
 @routes.route("/home")
 def home():
-    return render_template("home.html", pageTitle="Home")
+    currentMonth = datetime.today().month
+
+    return render_template("home.html", pageTitle="Home", months=utils.get_months())
 
 
 # region incomes

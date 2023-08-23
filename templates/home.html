@@ -5,9 +5,25 @@
 </head>
 <body>
 {% include "includes/_nav.html" %}
-<div class="container p-4">
-    <h1 class="display-1 text-center m-4">Budget App</h1>
+<div class="container p-4 text-center">
+    <h1 class="display-1 text-center m-4">App</h1>
+    {% for month in months %}
+    {% if month["active"] == True %}
+    {% if month["is_current"] == True %}
+    <button class="btn btn-primary">{{month["short_text"]}}</button>
+    {% else %}
+    <button class="btn btn-outline-dark">{{month["short_text"]}}</button>
+    {% endif %}
+    {% else %}
+    <button class="btn btn-dark">{{month["short_text"]}}</button>
+    {% endif %}
+    {% endfor %}
 </div>
+
+<div class="container">
+
+</div>
+
 {% include "includes/_footer.html" %}
 
 </body>
