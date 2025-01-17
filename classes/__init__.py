@@ -1,2 +1,2 @@
-from accountable import Accountable
-from income import Income
+from .accountable import Accountable
+from .income import Income

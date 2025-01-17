@@ -39,4 +39,6 @@ class Budgie():
         self.incomes.append({"name": name, "amount": amount, "repeat": True, "interval": 12})
 
 
-i = Income("TEST", 123)
+i = Income("123", 123)
+
+print(i.start_date)
