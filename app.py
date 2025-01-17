@@ -1,17 +1,23 @@
-from classes import Income
+from datetime import date
+
+from classes import Income, Outgoing
+from enums import Interval
+from enums.outgoing_category import Outgoing_Category
 
 
 class Budgie():
-    def __init__(self, save):
+    def __init__(self, save=None):
+        self.name = "New Budget"
         self.incomes = []
+        self.outgoings = []
         self.investments = []
         self.savings = []
-        self.rolling_expenses = []
-        self.committed_expenses = []
-        self.uncommitted_expenses = []
 
         if save:
             self.load_save(save)
+
+    def __str__(self):
+        return self.name
 
     # region IO
     def load_save(self, save):
@@ -35,10 +41,23 @@ class Budgie():
     # endregion
 
     # region Incomes
-    def add_income(self, name, amount):
-        self.incomes.append({"name": name, "amount": amount, "repeat": True, "interval": 12})
+    def add_income(self, name, amount, start_date=date.today(), end_date=None, interval=Interval.Once):
+        self.incomes.append(Income(name, amount, start_date, interval, end_date))
+
+    # endregion
+
+    # region Outgoings
+    def add_committed_outgoing(self, name, amount, start_date=date.today(), end_date=None, interval=Interval.Once):
+        self.outgoings.append(Outgoing(name, amount, start_date, interval, Outgoing_Category.Committed, end_date))
+
+    def add_flexible_outgoing(self, name, amount, start_date=date.today(), end_date=None, interval=Interval.Once):
+        self.outgoings.append(Outgoing(name, amount, start_date, Outgoing_Category.Flexible, interval, end_date))
+    # endregion
 
 
-i = Income("123", 123)
+b = Budgie()
+print(b)
+b.add_income("Salary", 2487.70, interval=Interval.Monthly, start_date=date(2023, 5, 28))
+print(b.incomes)
 
-print(i.start_date)
+print(b.incomes[0].get_next_due_date())
