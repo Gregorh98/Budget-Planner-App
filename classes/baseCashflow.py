@@ -41,8 +41,6 @@ class BaseCashflow:
                 d = date(start_date.year + 1, self.start_date.month, self.start_date.day)
             else:
                 d = date(start_date.year, self.start_date.month, self.start_date.day)
-            print(start_date, d)
-            # TODO: Fix the error with the above
             return d
         else:
             raise ValueError(f"Unsupported interval: {self.interval}")
