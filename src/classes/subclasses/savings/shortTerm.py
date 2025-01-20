@@ -1,4 +1,4 @@
-from classes import BaseSaving
+from src.classes import BaseSaving
 
 
 class ShortTerm(BaseSaving):

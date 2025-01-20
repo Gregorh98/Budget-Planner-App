@@ -1,4 +1,4 @@
-from classes import BaseOutgoing
+from src.classes import BaseOutgoing
 
 
 class Fixed(BaseOutgoing):

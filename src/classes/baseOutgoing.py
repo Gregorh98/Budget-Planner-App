@@ -1,4 +1,4 @@
-from classes import BaseCashflow
+from src.classes import BaseCashflow
 
 
 class BaseOutgoing(BaseCashflow):

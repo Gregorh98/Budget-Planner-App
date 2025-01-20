@@ -1,6 +1,6 @@
 from datetime import date, timedelta
 
-from enums import Interval
+from src.enums import Interval
 
 
 class BaseCashflow:
