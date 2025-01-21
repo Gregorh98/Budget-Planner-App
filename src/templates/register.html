@@ -14,6 +14,10 @@
     <h1>Login</h1>
 
     <form>
+        <div class="mb-2 input-group">
+            <input type="text" class="form-control me-2" placeholder="First Name">
+            <input type="text" class="form-control" placeholder="Last Name">
+        </div>
         <div class="mb-2">
             <input type="email" class="form-control" placeholder="Email">
         </div>
@@ -21,10 +25,10 @@
             <input type="password" class="form-control" placeholder="Password">
         </div>
         <div class="mb-2">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Register</button>
         </div>
         <div class="mb-2">
-            <p>Dont have an account? <a href="{{url_for('auth.register')}}">Register</a></p>
+            <p>Already have an account? <a href="{{url_for('auth.login')}}">Login</a></p>
         </div>
     </form>
 </div>

@@ -15,4 +15,4 @@ def logout():
 
 @auth_bp.route("/register")
 def register():
-    return "Register"
+    return render_template("register.html")
