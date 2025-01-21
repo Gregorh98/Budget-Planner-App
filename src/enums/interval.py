@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class Interval(Enum):
+class Interval(IntEnum):
     Once = 0
     Daily = 1
     Weekly = 2
