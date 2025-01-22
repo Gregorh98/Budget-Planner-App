@@ -10,7 +10,7 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
-      - DATABASE_URL=postgresql://postgres:password@db:6000/mydatabase
+      - DATABASE_URL=postgresql://postgres:password@db:6000/budget-app
     depends_on:
       - db
 

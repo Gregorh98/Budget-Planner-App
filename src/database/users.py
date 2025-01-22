@@ -1,17 +1,16 @@
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import String, Column, UUID
 
-from src.database import Base
+from database import Base
 
 
 class Users(Base):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    first_name: Mapped[str] = mapped_column(String(64))
-    last_name: Mapped[str] = mapped_column(String(64))
-    email: Mapped[str] = mapped_column(String(64))
-    password: Mapped[str] = mapped_column(String(64))
+    id = Column(UUID, primary_key=True)
+    first_name = Column(String(64))
+    last_name = Column(String(64))
+    email = Column(String(64))
+    password = Column(String(64))
 
     def __repr__(self) -> str:
         return (f"User(id={self.id!r}, "
