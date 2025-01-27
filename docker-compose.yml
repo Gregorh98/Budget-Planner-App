@@ -10,7 +10,7 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
-      - DATABASE_URL=postgresql://postgres:password@db:6000/budget-app
+      - DATABASE_URL=postgresql://postgres:password@db:5432/budgetapp
     depends_on:
       - db
 
@@ -18,7 +18,7 @@ services:
     image: postgres:15
     container_name: Postgres
     ports:
-      - "6000:6000"
+      - "6000:5432"
     expose:
       - "6000"
     environment:
@@ -28,7 +28,6 @@ services:
       - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    command: -p 6000
 
 volumes:
   postgres_data:
