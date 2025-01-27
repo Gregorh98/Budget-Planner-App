@@ -1,13 +1,13 @@
 from flask import session
 
-from database.models import Expense
+from database.models import Income
 from general import db
 
 
-class ExpenseService:
+class IncomeService:
     @staticmethod
     def add(name, value, start_date, end_date, interval):
-        i = Expense(
+        i = Income(
             session.get("user_id"),
             name=name,
             value=value,
@@ -22,4 +22,4 @@ class ExpenseService:
 
     @staticmethod
     def get_all():
-        return Expense.query.filter_by(user_id=session.get("user_id")).first()
+        return Income.query.filter_by(user_id=session.get("user_id")).first()

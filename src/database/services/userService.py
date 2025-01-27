@@ -5,10 +5,10 @@ from general import db
 class UserService:
     @staticmethod
     def add_user(email, first_name, last_name, password):
-        user = User(email=email, first_name=first_name, last_name=last_name, password=password)
-        db.session.add(user)
+        i = User(email=email, first_name=first_name, last_name=last_name, password=password)
+        db.session.add(i)
         db.session.commit()
-        return "User added successfully."
+        return i
 
     @staticmethod
     def get_user(username):
