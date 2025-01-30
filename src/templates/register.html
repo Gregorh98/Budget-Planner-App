@@ -9,8 +9,12 @@
 {% block nav%}
 {% endblock %}
 
+{% block flashes %}
+{{ super() }}
+{% endblock %}
+
 {% block content %}
-<div class="container">
+<div class="container-sm centered-div text-center">
     <h1>Register</h1>
 
     <form method="post">

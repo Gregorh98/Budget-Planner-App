@@ -13,11 +13,17 @@ def register():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        if UserService.register(email, first_name, last_name, password):
-            flash("Account created successfully, please log in", "success")
-            return redirect(url_for("auth.login"))
+        # Check for "nones"
+        print(first_name)
+        if any(param in [None, ""] for param in [first_name, last_name, email, password]):
+            flash("Please fill in all fields", "danger")
+            return redirect(url_for("auth.register"))
 
-        return redirect(url_for("auth.register"))
+        # Attempt to register the user
+        reg = UserService.register(email, first_name, last_name, password)
+
+        flash(reg.get("message"), "success" if reg.get("status") else "danger")
+        return redirect(url_for("auth.login" if reg.get("status") else "auth.register"))
 
     return render_template("register.html")
 
@@ -28,11 +34,11 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        if UserService.login(email, password):
-            print("HIT")
+        attempt = UserService.login(email, password)
+        if attempt.get("status"):
             return redirect(url_for("general.index"))
         else:
-            flash("Username or Password is incorrect", "danger")
+            flash(attempt.get("message"), "danger")
             return redirect(url_for("auth.login"))
     return render_template("login.html")
 
