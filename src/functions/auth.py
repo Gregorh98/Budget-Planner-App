@@ -1,3 +1,4 @@
+import logging
 from functools import wraps
 
 import bcrypt
@@ -8,6 +9,7 @@ def require_auth(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if not session.get("user_id"):
+            logging.info("No user_id in session, redirecting to login")
             return redirect(url_for("auth.login"))
         return f(*args, **kwargs)
 
