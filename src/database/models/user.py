@@ -11,4 +11,4 @@ class User(db.Model):
     email: Mapped[str] = mapped_column(unique=True)
     first_name: Mapped[str]
     last_name: Mapped[str]
-    password: Mapped[str]
+    password: Mapped[bytes]

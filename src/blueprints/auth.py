@@ -26,7 +26,7 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        UserService.login(email, password)
+        print(UserService.login(email, password))
 
         print(session.get("user_id"))
 
