@@ -1,6 +1,7 @@
 import logging
+import time
 
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, OperationalError
 
 from blueprints import auth_bp, general_bp
 from database.models import *  # NOQA
@@ -20,7 +21,14 @@ if __name__ == '__main__':
 
     with app.app_context():
         logging.info("Creating database structure")
-        db.create_all()
+        while True:
+            try:
+                db.create_all()
+                break
+            except OperationalError:
+                logging.log(logging.WARN, "Database connection failed. Retrying in 1 second.")
+                time.sleep(1)
+
         try:
             logging.info("Registering default user")
             UserService.register("test.user@test.com", "Test", "User", "password123")
