@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect, session
+from flask import Blueprint, render_template, request, url_for, redirect, flash, session
 
 from database.services import UserService
 
@@ -13,7 +13,9 @@ def register():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        UserService.register(email, first_name, last_name, password)
+        if UserService.register(email, first_name, last_name, password):
+            flash("Account created successfully, please log in", "success")
+            return redirect(url_for("auth.login"))
 
         return redirect(url_for("auth.register"))
 
@@ -26,14 +28,16 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        print(UserService.login(email, password))
-
-        print(session.get("user_id"))
-
-        return redirect(url_for("auth.login"))
+        if UserService.login(email, password):
+            print("HIT")
+            return redirect(url_for("general.index"))
+        else:
+            flash("Username or Password is incorrect", "danger")
+            return redirect(url_for("auth.login"))
     return render_template("login.html")
 
 
 @auth_bp.route("/logout")
 def logout():
-    return "Logout"
+    session.clear()
+    return redirect(url_for("auth.index"))

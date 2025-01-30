@@ -1,16 +1,16 @@
-from flask import Blueprint, redirect, url_for
+from flask import Blueprint, redirect, url_for, render_template
 
 from functions.auth import require_auth
 
-general_bp = Blueprint("general_bp", __name__)
+general_bp = Blueprint("general", __name__)
 
 
 @general_bp.route('/')
 def index():
-    return redirect(url_for('general_bp.home'))
+    return redirect(url_for('general.home'))
 
 
 @general_bp.route('/home')
 @require_auth
 def home():
-    return "Home"
+    return render_template('home.html')
